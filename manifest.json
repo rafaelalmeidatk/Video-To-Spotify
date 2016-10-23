@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "Video To Spotify",
+  "description": "Open the current music video on Spotify",
+  "version": "1.0",
+
+  "browser_action": {
+   "default_icon": "icon.png"
+  },
+  "permissions": [
+   "activeTab",
+   "https://*.youtube.com/*"
+   ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/watch*"],
+      "js": [
+        "dependencies/jquery-3.1.1.min.js",
+        "src/index.js"
+      ],
+      "css": ["src/style.css"]
+    }
+  ],
+  "web_accessible_resources": ["res/*.png"]
+}
