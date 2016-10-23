@@ -1,12 +1,13 @@
 .video-to-spotify-btn {
+	height: 24px !important;
 	color: #fefefe;
-	background-color: #e62117;
-	padding-left: 30px !important;
 	background-size: 15px;
+	background-color: #1DB954;
 	background-repeat: no-repeat;
-	background-position: 8px center;
+    background-position: 8px 3px;
+	padding-left: 30px !important;
 }
 
 .video-to-spotify-btn:hover {
-	background-color: #cc181e;
+	background-color: #1aa84c;
 }

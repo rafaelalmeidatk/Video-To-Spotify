@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Video To Spotify",
-  "description": "Open the current music video on Spotify",
+  "description": "Creates a button to open the current music video on Spotify",
   "version": "1.0",
 
   "browser_action": {
@@ -17,7 +17,7 @@
       "matches": ["https://*.youtube.com/watch*"],
       "js": [
         "dependencies/jquery-3.1.1.min.js",
-        "src/index.js"
+        "src/main.js"
       ],
       "css": ["src/style.css"]
     }
