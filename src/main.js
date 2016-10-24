@@ -10,7 +10,6 @@ var start = function() {
 		var songUrl = titleToUrl(songTitle);
 		var spotifyQuery = 'https://api.spotify.com/v1/search?type=track&query=' + songUrl;
 		$.get(spotifyQuery, function(data) {
-			console.log(data);
 			if (data.tracks.items.length > 0) {
 				createSpotifyButton(data.tracks.items[0]);
 				trackUrlChanges();
@@ -31,18 +30,21 @@ var createSpotifyButton = function(song) {
 };
 
 var trackUrlChanges = function() {
-	if (location.href != lastUrl) {
-		checkLoaded();
-		lastUrl = location.href;
-	} else {
-		setTimeout(trackUrlChanges, 2000);
-	}
+	// Listen to URL changes (based on the progress bar at the top of the page)
+	document.addEventListener('transitionend', function(e) {
+		if (e.target.id === 'progress' && location.href != lastUrl) {
+			checkLoaded();
+			lastUrl = location.href;
+		}
+	});
 };
 
 var checkLoaded = function() {
+	// Waits until the progress bar is loading
 	if ($('#progress').length) {
 		setTimeout(checkLoaded, 500);
 	} else {
+		// It doesn't exist anymore, so we can start the main function
 		start();
 	}
 };
