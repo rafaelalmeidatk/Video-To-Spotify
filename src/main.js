@@ -3,16 +3,22 @@
 var lastUrl = location.href;
 
 var start = function() {
-	var songTitle = $('#eow-title').text();
-	songTitle = cleanTitle(songTitle);
-	var songUrl = titleToUrl(songTitle);
-	var spotifyQuery = 'https://api.spotify.com/v1/search?type=track&query=' + songUrl;
-	$.get(spotifyQuery, function(data) {
-		if (data.tracks.items.length > 0) {
-			createSpotifyButton(data.tracks.items[0]);
-			trackUrlChanges();
-		}
-	});
+	if ($('#eow-title').length) {
+		// Check if we are on a video
+		var songTitle = $('#eow-title').text();
+		songTitle = cleanTitle(songTitle);
+		var songUrl = titleToUrl(songTitle);
+		var spotifyQuery = 'https://api.spotify.com/v1/search?type=track&query=' + songUrl;
+		$.get(spotifyQuery, function(data) {
+			if (data.tracks.items.length > 0) {
+				createSpotifyButton(data.tracks.items[0]);
+				trackUrlChanges();
+			}
+		});
+	} else {
+		// Not in video, just waits for url changes
+		trackUrlChanges();
+	}
 };
 
 var createSpotifyButton = function(song) {

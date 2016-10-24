@@ -14,7 +14,7 @@
    ],
   "content_scripts": [
     {
-      "matches": ["https://*.youtube.com/watch*"],
+      "matches": ["https://*.youtube.com/*"],
       "js": [
         "dependencies/jquery-3.1.1.min.js",
         "src/main.js"
