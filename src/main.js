@@ -10,6 +10,7 @@ var start = function() {
 		var songUrl = titleToUrl(songTitle);
 		var spotifyQuery = 'https://api.spotify.com/v1/search?type=track&query=' + songUrl;
 		$.get(spotifyQuery, function(data) {
+			console.log(data);
 			if (data.tracks.items.length > 0) {
 				createSpotifyButton(data.tracks.items[0]);
 				trackUrlChanges();

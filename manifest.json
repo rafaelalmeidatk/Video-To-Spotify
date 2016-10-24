@@ -4,13 +4,20 @@
   "name": "Video To Spotify",
   "description": "Creates a button to open the current music video on Spotify",
   "version": "1.0",
+  "homepage_url": "https://github.com/rafaelalmeidatk/Video-To-Spotify",
 
   "icons": {
     "16": "icons/icon16.png",
     "19": "icons/icon19.png",
+    "38": "icons/icon38.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png",
     "256": "icons/icon256.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/icon19.png"
+    
   },
 
   "permissions": [
@@ -28,6 +35,6 @@
       "css": ["src/style.css"]
     }
   ],
-  
+
   "web_accessible_resources": ["res/*.png"]
 }
