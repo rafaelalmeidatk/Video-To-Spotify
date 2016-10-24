@@ -5,13 +5,19 @@
   "description": "Creates a button to open the current music video on Spotify",
   "version": "1.0",
 
-  "browser_action": {
-   "default_icon": "icon.png"
+  "icons": {
+    "16": "icons/icon16.png",
+    "19": "icons/icon19.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
   },
+
   "permissions": [
    "activeTab",
    "https://*.youtube.com/*"
    ],
+
   "content_scripts": [
     {
       "matches": ["https://*.youtube.com/*"],
@@ -22,5 +28,6 @@
       "css": ["src/style.css"]
     }
   ],
+  
   "web_accessible_resources": ["res/*.png"]
 }
