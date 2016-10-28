@@ -33,7 +33,7 @@ var trackUrlChanges = function() {
 	// Tries to catch the URL changes
 	document.addEventListener('transitionend', function(e) {
 		// Checks if the progress bar at the top changer OR the player is loading, maybe the video changed
-		if ((e.target.id === 'progress' || e.srcElement.className) === 'ytp-load-progress' && location.href != lastUrl) {
+		if ((e.target.id === 'progress' || e.srcElement.className === 'ytp-load-progress') && location.href != lastUrl) {
 			checkLoaded();
 			lastUrl = location.href;
 		}
