@@ -30,9 +30,10 @@ var createSpotifyButton = function(song) {
 };
 
 var trackUrlChanges = function() {
-	// Listen to URL changes (based on the progress bar at the top of the page)
+	// Tries to catch the URL changes
 	document.addEventListener('transitionend', function(e) {
-		if (e.target.id === 'progress' && location.href != lastUrl) {
+		// Checks if the progress bar at the top changer OR the player is loading, maybe the video changed
+		if ((e.target.id === 'progress' || e.srcElement.className) === 'ytp-load-progress' && location.href != lastUrl) {
 			checkLoaded();
 			lastUrl = location.href;
 		}
