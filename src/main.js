@@ -22,17 +22,20 @@ var start = function() {
 };
 
 var createSpotifyButton = function(song) {
-	var uri = song.uri;
-	var button = $("<a href='" + uri +"' class='video-to-spotify-btn yt-uix-button' alt='Open in Spotify'>Open in Spotify</a>");
-	button.css({"background-image": "url(" + chrome.extension.getURL("res/spotify_icon.png") + ")"});
-	$('.yt-uix-button-subscription-container').append(button);
-	$('.yt-uix-overlay').css('display', 'inline-block');
+	// Checks if the button does not exist before adding it
+	if (!$('.video-to-spotify-btn').length) {
+		var uri = song.uri;
+		var button = $("<a href='" + uri +"' class='video-to-spotify-btn yt-uix-button' alt='Open in Spotify'>Open in Spotify</a>");
+		button.css({"background-image": "url(" + chrome.extension.getURL("res/spotify_icon.png") + ")"});
+		$('.yt-uix-button-subscription-container').append(button);
+		$('.yt-uix-overlay').css('display', 'inline-block');
+	}
 };
 
 var trackUrlChanges = function() {
 	// Tries to catch the URL changes
 	document.addEventListener('transitionend', function(e) {
-		// Checks if the progress bar at the top changer OR the player is loading, maybe the video changed
+		// Checks if the progress bar at the top changed OR the player is loading, maybe the video changed
 		if ((e.target.id === 'progress' || e.srcElement.className === 'ytp-load-progress') && location.href != lastUrl) {
 			checkLoaded();
 			lastUrl = location.href;
